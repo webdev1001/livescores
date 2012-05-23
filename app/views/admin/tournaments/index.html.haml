@@ -1,0 +1,9 @@
+.well
+  %p
+    %h1 Selecteer een toernooi
+  - @tournaments.each do |tournament|
+    =link_to admin_tournament_path(tournament), :class => 'btn' do
+      %h3=tournament.name
+
+%p
+  = link_to 'Nieuw toernooi', new_admin_tournament_path, :class => "btn"

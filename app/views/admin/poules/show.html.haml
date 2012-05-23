@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @poule.name
+%p
+  %b Tournament:
+  = @poule.tournament_id
+= link_to 'Edit', edit_poule_path(@poule)
+|
+\#{link_to 'Back', poules_path}

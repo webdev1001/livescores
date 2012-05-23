@@ -1,0 +1,12 @@
+.dib
+  %table.table
+    %thead
+      %tr
+        %th{:colspan => 4}=poule.name
+      %tr
+        %th Thuis
+        %th 
+        %th Uit
+        %th Uitslag
+    %tbody
+      =render poule.games

@@ -1,0 +1,17 @@
+%h1 Listing poules
+%table
+  %tr
+    %th Name
+    %th Tournament
+    %th
+    %th
+    %th
+  - @poules.each do |poule|
+    %tr
+      %td= poule.name
+      %td= poule.tournament_id
+      %td= link_to 'Show', poule
+      %td= link_to 'Edit', edit_poule_path(poule)
+      %td= link_to 'Destroy', poule, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Poule', new_poule_path

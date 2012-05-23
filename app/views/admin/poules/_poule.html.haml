@@ -1,0 +1,18 @@
+.dib
+  %table.table
+    %thead
+      %tr
+        %th{:colspan => 4}=poule.name
+      %tr
+        %th Thuis
+        %th 
+        %th Uit
+        %th Uitslag
+    %tbody
+      - poule.games.each do |game|        
+        %tr
+          %td{:class => ( game.home_score.to_i > game.away_score.to_i ? 'winner' : 'loser' )}=game.home_team.name
+          %td -
+          %td{:class => ( game.home_score.to_i < game.away_score.to_i ? 'winner' : 'loser' )}=game.away_team.name
+          %td="#{game.home_score} - #{game.away_score}"
+        

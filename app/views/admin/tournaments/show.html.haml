@@ -1,0 +1,8 @@
+%p
+  %h1=@tournament.name
+.well
+  #poules= render "poules"
+
+= simple_form_for [:admin, Poule.new ], :remote => true do |p|
+  = p.input :name, :label => false, :input_html => { :placeholder => "Nieuwe poule toevoegen..."}
+  = p.hidden_field :tournament_id, :value => @tournament.id

@@ -1,0 +1,5 @@
+%h1
+  = @tournament.name
+  = link_to "Genereer schema" ,generate_schedule_admin_tournament_path(@tournament), :class => 'btn'
+%hr
+= render @tournament.poules
