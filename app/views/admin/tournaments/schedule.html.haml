@@ -1,5 +1,5 @@
 %h1
-  = @tournament.name
-  = link_to "Genereer schema" ,generate_schedule_admin_tournament_path(@tournament), :class => 'btn'
+  = @current_tournament.name
+  = link_to "(her)Genereer schema", generate_schedule_admin_tournament_path(@current_tournament), :class => 'btn', :confirm => 'Alle bestaande wedstrijden voor dit toernooi worden verwijderd.'
 %hr
-= render @tournament.poules
+= render @current_tournament.poules
