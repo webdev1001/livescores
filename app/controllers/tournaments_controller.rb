@@ -1,7 +1,15 @@
 class TournamentsController < ApplicationController
   
   def show
-    @tournament = Tournament.find(params[:id])
+    @tournament = current_tournament
+  end
+  
+  def ranking
+    @tournament = current_tournament
+  end
+  
+  def finals
+    @tournament = current_tournament
   end
 
 end

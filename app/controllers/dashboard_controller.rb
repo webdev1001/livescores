@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   
   def index
-    @games = Game.recent
+    @games = current_tournament.games.recent
   end
 
 end

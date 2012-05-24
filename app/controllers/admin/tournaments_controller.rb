@@ -9,10 +9,8 @@ class Admin::TournamentsController < Admin::AdminController
     end
   end
 
-  # GET /tournaments/1
-  # GET /tournaments/1.json
   def show
-    @tournament = Tournament.find(params[:id])
+    @tournament = current_tournament
 
     respond_to do |format|
       format.html # show.html.erb
@@ -20,8 +18,6 @@ class Admin::TournamentsController < Admin::AdminController
     end
   end
 
-  # GET /tournaments/new
-  # GET /tournaments/new.json
   def new
     @tournament = Tournament.new
 
@@ -31,13 +27,10 @@ class Admin::TournamentsController < Admin::AdminController
     end
   end
 
-  # GET /tournaments/1/edit
   def edit
     @tournament = Tournament.find(params[:id])
   end
 
-  # POST /tournaments
-  # POST /tournaments.json
   def create
     @tournament = Tournament.new(params[:tournament])
 
@@ -52,8 +45,6 @@ class Admin::TournamentsController < Admin::AdminController
     end
   end
 
-  # PUT /tournaments/1
-  # PUT /tournaments/1.json
   def update
     @tournament = Tournament.find(params[:id])
 
@@ -72,6 +63,7 @@ class Admin::TournamentsController < Admin::AdminController
     tournament = Tournament.find(params[:id])
     
     tournament.poules.each do |poule|
+      poule.games.delete_all
       poule.schedule.gamedays.each do |gameday|
         gameday.games.each do |match|
           Game.create!(:home_id => match.team_a, :away_id => match.team_b, :poule_id => poule.id)
@@ -82,8 +74,6 @@ class Admin::TournamentsController < Admin::AdminController
     redirect_to schedule_admin_tournament_path(@tournament), notice: 'Toernooischema gegenereerd.'
   end
 
-  # DELETE /tournaments/1
-  # DELETE /tournaments/1.json
   def destroy
     @tournament = Tournament.find(params[:id])
     @tournament.destroy
@@ -95,6 +85,12 @@ class Admin::TournamentsController < Admin::AdminController
   end
   
   def schedule
-    @tournament = Tournament.find(params[:id])
+    @page = 'schedule'
+    @tournament = current_tournament
+  end
+  
+  def games
+    @page = 'games'    
+    @tournament = current_tournament
   end
 end
