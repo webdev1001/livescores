@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523212427) do
+ActiveRecord::Schema.define(:version => 20120524153835) do
 
   create_table "games", :force => true do |t|
     t.integer  "home_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120523212427) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "subdomain"
   end
 
   create_table "users", :force => true do |t|
