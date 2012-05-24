@@ -1,0 +1,18 @@
+- if !game.winner.nil?
+  - if game.winner == 0
+    - home_class_name = "draw"
+    - away_class_name = "draw"
+  - elsif game.winner == game.home_id
+    - home_class_name = "winner"
+    - away_class_name = "loser"
+  - else
+    - home_class_name = "loser"
+    - away_class_name = "winner"
+%tr{:id => game.id}
+  %td{:class => home_class_name }=game.home_team.name
+  %td -
+  %td{:class => away_class_name }=game.away_team.name
+  - if @page == 'schedule'
+    %td="#{game.home_score} - #{game.away_score}"
+  - else
+    %td.form= render "admin/games/form", :game => game

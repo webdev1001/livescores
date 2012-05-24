@@ -44,18 +44,30 @@ Livescore::Application.routes.draw do
 
   # Sample resource route within a namespace:
   namespace :admin do
+    match 'schedule', :to => 'tournaments#schedule', :as => 'schedule'
+    match 'games', :to => 'tournaments#games', :as => 'games'
+    
     resources :tournaments do
       member do
         get :schedule
         get :generate_schedule
+        get :games
       end
     end
-    resources :poules, :teams
+    resources :poules, :teams, :games
     root :to => 'admin#index'
   end
   
-  resources :tournaments
-
+  resources :tournaments do
+    member do
+      get :ranking
+    end
+  end
+  
+  match 'schedule', :to => 'tournaments#show', :as => 'schedule'
+  match 'ranking', :to => 'tournaments#ranking', :as => 'ranking'
+  match 'finals', :to => 'tournaments#finals', :as => 'finals'
+  
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'dashboard#index'

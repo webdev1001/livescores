@@ -1,5 +1,5 @@
 - @tournament.poules.each do |poule|
-  %div.poule
+  %div.poule.dib
     %h3= poule.name
     = simple_form_for [:admin, Team.new ], :remote => true do |p|
       = p.input :name, :label => false, :input_html => { :placeholder => "Nieuw team in poule #{poule.name}"}

@@ -1,0 +1,4 @@
+= simple_form_for [:admin, game ], :remote => true do |p|
+  = p.input :home_score, :label => false, :wrapper => false
+  = p.input :away_score, :label => false, :wrapper => false
+  = p.submit "Save", :class => 'btn'

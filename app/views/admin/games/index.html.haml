@@ -1,0 +1,5 @@
+.well
+  %p
+    %h1 Selecteer een toernooi
+    =link_to admin_tournament_path(@current_tournament), :class => 'btn' do
+      %h3=@current_tournament.name
