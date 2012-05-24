@@ -1,0 +1,16 @@
+.dib{:style => "margin:10px;"}
+  %h3= poule.name
+  %table.table-striped{:width => "200"}
+    %thead
+      %tr
+        %th #
+        %th{:width => '200'} Team
+        %th Punten
+    %tbody
+      - i = 0
+      - poule.ranking.each do |team|
+        - i = i + 1
+        %tr
+          %td=i
+          %td=team.name
+          %td=team.points

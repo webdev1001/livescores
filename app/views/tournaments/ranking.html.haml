@@ -1,0 +1,6 @@
+%p
+  %h2 Stand
+
+- @tournament.poules.each do |poule|
+  = render 'poules/ranking', :poule => poule
+  
