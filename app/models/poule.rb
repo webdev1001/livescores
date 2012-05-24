@@ -26,4 +26,13 @@ class Poule < ActiveRecord::Base
     
     return poule.generate
   end
+  
+  def ranking
+    teams = []
+    self.teams.each do |team|
+      team.points = team.calulate_points
+      teams << team
+    end
+    teams.sort! { |a,b| b.points <=> a.points }
+  end
 end
