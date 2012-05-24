@@ -18,11 +18,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          =link_to "LiveScore", root_url, :class => 'brand'
+          =link_to @current_tournament.name, root_url, :class => 'brand'
           .nav-collapse
             %ul.nav
-              %li=link_to "Uitslagen & Programma", tournament_path(1)
-              %li=link_to "Stand", tournament_path(1)
+              %li=link_to "Uitslagen & Programma", schedule_path
+              %li=link_to "Stand", ranking_path
     .container
       = render "layouts/flashmessages"
       =yield

@@ -18,11 +18,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          =link_to "LiveScore", root_url, :class => 'brand'
+          =link_to "#{@current_tournament.name}", root_url, :class => 'brand'
           .nav-collapse
             %ul.nav
-              %li=link_to "Uitslagen"
-              %li=link_to "Toernooi manager", admin_tournaments_path
+              %li{:class => ( @page == 'games' ? 'active' : '')}=link_to "Wedstrijden", admin_games_path
+              %li{:class => ( @page == 'schedule' ? 'active' : '')}=link_to "Toernooi manager", admin_schedule_path
     .container
       = render "layouts/flashmessages"
       =yield
